@@ -1,26 +1,37 @@
+import br.com.alura.screenmatch.calculos.Calculadora;
+import br.com.alura.screenmatch.calculos.Recomendation;
+import br.com.alura.screenmatch.modelos.Film;
+import br.com.alura.screenmatch.modelos.Serie;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Esse é o Screen Match!");
-        System.out.println("Filme: Top Gun: Maverick");
+        Film harryPotter = new Film();
+        harryPotter.setNome("Harry Potter e a Pedra Filosofal"); ;
+        harryPotter.setYear(2001);
+        harryPotter.setDuration(152);
 
-        // Tipo Primitivos
-        int year = 2022;
-        System.out.println("Ano de lançamento: " + year);
+        harryPotter.evaluate(10);
+        harryPotter.evaluate(8);
+        harryPotter.evaluate(9);
 
-        boolean includedPlan = false;
-        System.out.println("Incluído no plano: " + includedPlan);
+        harryPotter.showFiche();
+        System.out.println("Avaliação: " + harryPotter.media());
+        System.out.println("Quantidade de Avaliações: " + harryPotter.getQtsAvaliation());
+        Calculadora calculadora = new Calculadora();
+        calculadora.included(harryPotter);
+        System.out.println("Duração: " + calculadora.getTotalTime() + " minutos");
+        Recomendation filtro = new Recomendation();
+        filtro.filter(harryPotter);
 
-        double note = 8.1;
+        System.out.println("------------------------------------");
 
-        // Calculos
-        double media = (9.8 + 6.3 + 8) / 3;
-        //System.out.println("Media de Notas: " + media);
-
-        String sinopse = """
-                Filme de aventura com galã dos anos 80""";
-        System.out.println("Sinopse:" + sinopse);
-
-        int classification = (int) (media / 2);
-        System.out.println("Classificação: " + classification + " estrelas");
+        Serie you = new Serie();
+        you.setNome("You");
+        you.setYear(2018);
+        you.showFiche();
+        you.setSeason(5);
+        you.setEpBySeason(12);
+        you.setMinByEpisodes(50);
+        calculadora.included(you);
     }
 }
